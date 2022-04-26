@@ -1,0 +1,38 @@
+
+<h3>Reposición de productos</h3>
+<div class="container border" *ngIf="displayForm">
+    <app-schedule-form [selectedModule] = "selectedModule"></app-schedule-form>
+</div>
+<div class="row mt-3 mb-1">
+    <div class="col-md-6 col-12">
+        <button *ngIf="!displayForm" class="btn btn-primary mr-2" (click)="createSchedule()" ngbTooltip="Agregar nueva programación">
+          Agregar
+        </button>
+        <!--<button class="btn btn-primary"  [routerLink]='["/multiple-schedule"]'>
+            Registro Múltiple
+        </button>-->
+    </div>
+</div>
+<!--<form>
+    <div class="form-group row col-md-12 col-12 justify-content-md-center">
+      <label for="searchTerm" class="col-auto col-form-label font-weight-bold"> Fecha de Recepción:</label>
+      <input style="width: 195px;" class="form-control col-auto mb-md-2" type="date" name="searchTerm" id="searchTerm" [ngModel]="scheduleService.searchTerm | date:'yyyy-MM-dd'" (ngModelChange)="scheduleService.searchTerm = $event" ngbTooltip="Filtrar por fecha de producción"/>
+      <div class="col-auto"> 
+          <select class="custom-select" name="idProceso" id="idProceso" style="width: 250px;" (change)="processChange()" ngbTooltip="Filtrar por codigo de producto">
+            <option value="" selected>Código de producto...</option>
+            <option *ngFor="let process of processes" value={{process.id}}>
+              {{process.descripcion}}
+            </option>
+          </select>
+      </div>
+      <div class="col-auto">
+          <select class="custom-select" name="idModulo" id="idModulo" style="width: 250px;" (change)="filterByModule()" ngbTooltip="Filtrar por cantidad">
+            <option value="" selected>Cantidad deseada...</option>
+            <option *ngFor="let module of optionModules" value={{module.id}}>
+              {{module.descripcion}}
+            </option>
+          </select>
+      </div>
+    </div>    
+</form>-->
+

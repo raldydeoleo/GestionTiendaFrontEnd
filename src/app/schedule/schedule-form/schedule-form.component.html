@@ -1,0 +1,62 @@
+<form  appFormInvalidInputFocus [formGroup]="formGroup" class="mt-3">
+    <div class="col-12">
+        <label class="col-8 control-label font-weight-bold"
+        for="id">Producto:</label>
+        <ng-select [items]="products" 
+        bindLabel="fullDescripcion" 
+        bindValue="id"
+        id="id"
+        required
+        placeholder="Buscar productos..."
+        formControlName="id"
+        [ngClass]="{'border-danger': (formGroup.get('id').touched || formGroup.get('id').dirty) && !formGroup.get('id').valid }">        
+        </ng-select>                 
+    </div>
+    <span class="help-block"
+    [ngClass]="{'text-danger': (formGroup.get('id').touched || formGroup.get('id').dirty) && !formGroup.get('id').valid }"
+    *ngIf="(formGroup.get('id').touched || formGroup.get('id').dirty) && formGroup.get('id').errors">
+        <span *ngIf="formGroup.get('id').errors.required">
+            *El producto es requerido
+        </span>
+    </span>
+    <fieldset>
+       
+        <div class="row">          
+            <div class="form-group col-md-4 col-12">
+                <label class="col-md-2 control-label font-weight-bold"
+                for="cantidad">Cantidad:</label>
+                <div class="form-group col-6"><input class="form-control" id="cantidad"  type="text" required  formControlName="cantidad"  /> </div>    
+                  <!--Using items input-->          
+            </div>           
+            <div class="form-group col-md-4 col-12">
+                <label class="col-8 control-label font-weight-bold"
+                for="fechaProduccion">Fecha de recepción:</label>
+                <div class="col-12">
+                    <input placeholder="Fecha Producción..." class="form-control" id="fechaProduccion" type="date" required  formControlName="fechaProduccion" [value]="formGroup.get('fechaProduccion').value"  [ngClass]="{'border-danger': (formGroup.get('fechaProduccion').touched || formGroup.get('fechaProduccion').dirty) && !formGroup.get('fechaProduccion').valid }"/>
+                </div>
+                <span class="help-block"
+                [ngClass]="{'text-danger': (formGroup.get('fechaProduccion').touched || formGroup.get('fechaProduccion').dirty) && !formGroup.get('fechaProduccion').valid }"
+                *ngIf="(formGroup.get('fechaProduccion').touched || formGroup.get('fechaProduccion').dirty) && formGroup.get('fechaProduccion').errors">
+                    <span *ngIf="formGroup.get('fechaProduccion').errors.required">
+                        *La Fecha es requerida
+                    </span>
+                </span>
+            </div>
+        </div>        
+        <div class="row"></div>
+        <div class="row">
+          <div class="form-group col-md-4 col-12 align-self-center">
+            <button class="btn btn-primary mr-2 ml-3" type="submit" (click)="updateCantidad()">
+              Reponer
+            </button>
+            <button class="btn btn-outline-danger mr-2 ml-3" (click)="reponer()" ngbTooltip="Abandona pantalla de reposición">
+              Finalizar
+            </button>
+            <button class="btn btn-secondary" (click)="cancel()" ngbTooltip="Cerrar este formulario">
+              Salir
+            </button>
+          </div>
+        </div>
+
+    </fieldset>
+</form>
